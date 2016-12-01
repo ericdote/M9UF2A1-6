@@ -11,20 +11,21 @@ package practica1u6;
  */
 public class Cuenta {
 
-    private static float saldo = 1500;
-    private boolean estat = Boolean.FALSE;
+    private static float saldo = 100;
+    public boolean estat = Boolean.FALSE;
 
-    public synchronized float get(float retirada) {
-        while (!estat) {
+    public synchronized void get(float retirada) {
+        while (estat && (saldo-retirada) > 0) {
             try {
                 wait();
             } catch (InterruptedException e) {
                 System.err.println("Contenedor: Error en get -> " + e.getMessage());
             }
         }
+        this.saldo -= retirada;
         estat = !estat;
-        notify();
-        return saldo - retirada;
+        System.out.println("S'ha realitzat una retirada de: " + retirada + " el saldo actual es: " + saldo);
+        notifyAll();
     }
 
     public synchronized void put(float ingres) {
@@ -37,6 +38,7 @@ public class Cuenta {
         }
         this.saldo += ingres;
         estat = !estat;
-        notify();
+        System.out.println("S'ha realitzat un ingres de: " + ingres + " el saldo actual es: " + saldo);
+        notifyAll();
     }
 }

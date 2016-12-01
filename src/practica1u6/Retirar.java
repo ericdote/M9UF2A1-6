@@ -5,6 +5,10 @@
  */
 package practica1u6;
 
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author ALUMNEDAM
@@ -24,11 +28,17 @@ public class Retirar implements Runnable {
 
     @Override
     public void run() {
-        retirada = (float) Math.random() * (200 - 0) + 200;
-        saldo -= retirada;
+        Random rn = new Random();
+       retirada = rn.nextInt(50);
         while (Boolean.TRUE) {
-            System.out.println("El ingressador " + idretirador + " ingressa: " + cuenta.get(retirada));
+            cuenta.get(retirada);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Retirar.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
+        
     }
 
 }

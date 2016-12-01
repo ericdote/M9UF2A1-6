@@ -1,6 +1,10 @@
 
 package practica1u6;
 
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 public class Ingressar implements Runnable{
     
@@ -16,12 +20,16 @@ public class Ingressar implements Runnable{
     
     
     @Override
-    public void run(){
-        
-        ingres = (float) Math.random() * (200 - 0) + 200;
-        saldo += ingres;
+    public void run(){        
+       Random rn = new Random();
+       ingres = rn.nextInt(10);
         while(Boolean.TRUE){    
-           System.out.println("El ingressador " + idingressador + " ingressa: " + cuenta.get(ingres));
+            cuenta.put(ingres);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Retirar.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }

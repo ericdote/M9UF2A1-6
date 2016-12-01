@@ -21,13 +21,10 @@ public class Practica1u6 {
         ingressador = new Thread[CANTIDADINGRESSADORES];
         retirador = new Thread[CANTIDADRETIRADORES];
         for (int i = 0; i < CANTIDADRETIRADORES; i++) {
-            System.out.println(i);
             retirador[i] = new Thread(new Retirar(cuenta, i));
-            System.out.println(i);
             retirador[i].start();
         }
         for (int i = 0; i < CANTIDADINGRESSADORES; i++) {
-            System.out.println(i);
             ingressador[i] = new Thread(new Ingressar(cuenta, i));
             ingressador[i].start();
         }
