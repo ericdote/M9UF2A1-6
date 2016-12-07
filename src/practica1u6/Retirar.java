@@ -18,19 +18,26 @@ public class Retirar implements Runnable {
     private final Cuenta cuenta;
     private final int idretirador;
     private float retirada;
-        private float saldo;
-
-
+    private float saldo;
+    /**
+     * Inicialitza les variables en el constructor
+     * @param cuenta
+     * @param idretirador 
+     */
     public Retirar(Cuenta cuenta, int idretirador) {
         this.cuenta = cuenta;
         this.idretirador = idretirador;
     }
-
+    /**
+     * Crea el Random i fa un while infinit. 
+     * Calcula un numero al atzar per despres cridat al metode get enviant per parametre el ingres(numero atzar) per realitzar les operacions
+     * I espera 1 segon per mostrar la seguent accio.
+     */
     @Override
     public void run() {
         Random rn = new Random();
-       retirada = rn.nextInt(50);
         while (Boolean.TRUE) {
+            retirada = rn.nextInt(50);
             cuenta.get(retirada);
             try {
                 Thread.sleep(1000);
@@ -38,7 +45,7 @@ public class Retirar implements Runnable {
                 Logger.getLogger(Retirar.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
     }
 
 }

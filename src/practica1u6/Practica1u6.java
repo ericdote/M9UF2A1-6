@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package practica1u6;
 
 public class Practica1u6 {
@@ -14,7 +9,9 @@ public class Practica1u6 {
     private static final int CANTIDADRETIRADORES = 5;
 
     /**
-     * @param args the command line arguments
+     * Metode main e qual inicliatza la clase Cuenta  i crea els arrays de Ingressador i Retirador.
+     * Fa un bucle recorrent tots els retiradors i ingressadors per anar realitzant les diferents operacions que realitza el programa.
+     * @param args 
      */
     public static void main(String[] args) {
         cuenta = new Cuenta();
